@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.com/oligot/go-mod-upgrade.svg?branch=master)](https://travis-ci.com/oligot/go-mod-upgrade)
 [![License](https://img.shields.io/github/license/oligot/go-mod-upgrade)](/license)
-[![Release](https://img.shields.io/github/v/release/oligot/go-mod-upgrade.svg)](https://github.com/oligot/go-mod-upgrade/releases/latest)
+[![Release](https://img.shields.io/github/v/release/oligot/go-mod-upgrade.svg)](https://github.com/arielsrv/go-mod-upgrade/releases/latest)
 
-> Update outdated Go dependencies interactively 
+> Update outdated Go dependencies interactively
 
 ![Screenshot](screenshot.png)
 
@@ -25,12 +25,12 @@ This is similar to [yarn upgrade-interactive](https://legacy.yarnpkg.com/en/docs
 
 ## Install
 
-Pre-compiled binaries for Windows, OS X and Linux are available in the [releases page](https://github.com/oligot/go-mod-upgrade/releases).
+Pre-compiled binaries for Windows, OS X and Linux are available in the [releases page](https://github.com/arielsrv/go-mod-upgrade/releases).
 
 Alternatively, with the Go toolchain, you can do
 
 ```
-go install github.com/oligot/go-mod-upgrade@latest
+go install github.com/arielsrv/go-mod-upgrade@latest
 ```
 
 ## Usage
@@ -47,7 +47,7 @@ Colors in module names help identify the update type:
 
 Additional options can be specified via the CLI global options:
 
-``` 
+```
 GLOBAL OPTIONS:
    --pagesize value, -p value  Specify page size (default: 10)
    --force, -f                 Force update all modules in non-interactive mode (default: false)
