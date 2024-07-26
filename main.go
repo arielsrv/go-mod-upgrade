@@ -297,16 +297,16 @@ func choose(modules []Module, pageSize int) []Module {
 			PageSize: pageSize,
 		},
 	}
-	choice := []int{}
+	var choice []int
 	err := survey.AskOne(prompt, &choice)
-	if err == term.InterruptErr {
+	if errors.Is(err, term.InterruptErr) {
 		log.Info("Bye")
 		os.Exit(0)
 	} else if err != nil {
 		log.WithError(err).Error("Choose failed")
 		os.Exit(1)
 	}
-	updates := []Module{}
+	var updates []Module
 	for _, x := range choice {
 		updates = append(updates, modules[x])
 	}
