@@ -1,7 +1,7 @@
 # This code is licensed under the terms of the MIT license https://opensource.org/license/mit
 # Copyright (c) 2021 Marat Reymers
 
-## Golden config for golangci-lint v1.59.1
+## Golden config for golangci-lint v1.60.3
 #
 # This is the best config for golangci-lint based on my experience and opinion.
 # It is very strict, but not extremely strict.
@@ -10,8 +10,7 @@
 run:
   # Timeout for analysis, e.g. 30s, 5m.
   # Default: 1m
-  timeout: 10m
-  allow-parallel-runners: true
+  timeout: 3m
 
 
 # This file contains only configs which differ from defaults.
@@ -228,14 +227,13 @@ linters:
     - bidichk # checks for dangerous unicode character sequences
     - bodyclose # checks whether HTTP response body is closed successfully
     - canonicalheader # checks whether net/http.Header uses canonical header
-    - copyloopvar # detects places where loop variables are copied
+    - copyloopvar # detects places where loop variables are copied (Go 1.22+)
     - cyclop # checks function and package cyclomatic complexity
     - dupl # tool for code clone detection
     - durationcheck # checks for two durations multiplied together
     - errname # checks that sentinel errors are prefixed with the Err and error types are suffixed with the Error
     - errorlint # finds code that will cause problems with the error wrapping scheme introduced in Go 1.13
     - exhaustive # checks exhaustiveness of enum switch statements
-    - exportloopref # checks for pointers to enclosing loop variables
     - fatcontext # detects nested contexts in loops
     #- forbidigo # forbids identifiers
     - funlen # tool for detection of long functions
@@ -254,7 +252,7 @@ linters:
     - goprintffuncname # checks that printf-like functions are named with f at the end
     #- gosec # inspects source code for security problems
     - intrange # finds places where for loops could make use of an integer range
-    #- lll # reports long lines
+    - lll # reports long lines
     - loggercheck # checks key value pairs for common logger libraries (kitlog,klog,logr,zap)
     - makezero # finds slice declarations with non-zero initial length
     - mirror # reports wrong mirror patterns of bytes/strings usage
@@ -269,7 +267,7 @@ linters:
     - nonamedreturns # reports all named returns
     - nosprintfhostport # checks for misuse of Sprintf to construct a host with port in a URL
     - perfsprint # checks that fmt.Sprintf can be replaced with a faster alternative
-    - predeclared # finds code that shadows one of Go's predeclared identifiers
+    #- predeclared # finds code that shadows one of Go's predeclared identifiers
     - promlinter # checks Prometheus metrics naming via promlint
     - protogetter # reports direct reads from proto message fields when getters should be used
     - reassign # checks that package variables are not reassigned
@@ -291,20 +289,20 @@ linters:
     - whitespace # detects leading and trailing whitespace
 
     ## you may want to enable
-    - decorder # checks declaration order and count of types, constants, variables and functions
+    #- decorder # checks declaration order and count of types, constants, variables and functions
     #- exhaustruct # [highly recommend to enable] checks if all structure fields are initialized
-    - gci # controls golang package import order and makes it always deterministic
-    - ginkgolinter # [if you use ginkgo/gomega] enforces standards of using ginkgo and gomega
-    - godox # detects FIXME, TODO and other comment keywords
-    - goheader # checks is file header matches to pattern
-    - inamedparam # [great idea, but too strict, need to ignore a lot of cases by default] reports interfaces with unnamed method parameters
-    - interfacebloat # checks the number of methods inside an interface
-    - ireturn # accept interfaces, return concrete types
+    #- gci # controls golang package import order and makes it always deterministic
+    #- ginkgolinter # [if you use ginkgo/gomega] enforces standards of using ginkgo and gomega
+    #- godox # detects FIXME, TODO and other comment keywords
+    #- goheader # checks is file header matches to pattern
+    #- inamedparam # [great idea, but too strict, need to ignore a lot of cases by default] reports interfaces with unnamed method parameters
+    #- interfacebloat # checks the number of methods inside an interface
+    #- ireturn # accept interfaces, return concrete types
     #- prealloc # [premature optimization, but can be used in some cases] finds slice declarations that could potentially be preallocated
-    - tagalign # checks that struct tags are well aligned
+    #- tagalign # checks that struct tags are well aligned
     #- varnamelen # [great idea, but too many false positives] checks that the length of a variable's name matches its scope
     #- wrapcheck # checks that errors returned from external packages are wrapped
-    - zerologlint # detects the wrong usage of zerolog that a user forgets to dispatch zerolog.Event
+    #- zerologlint # detects the wrong usage of zerolog that a user forgets to dispatch zerolog.Event
 
     ## disabled
     #- containedctx # detects struct contained context.Context field
@@ -315,6 +313,7 @@ linters:
     #- err113 # [too strict] checks the errors handling expressions
     #- errchkjson # [don't see profit + I'm against of omitting errors like in the first example https://github.com/breml/errchkjson] checks types passed to the json encoding functions. Reports unsupported types and optionally reports occasions, where the check for the returned error can be omitted
     #- execinquery # [deprecated] checks query string in Query function which reads your Go src files and warning it finds
+    #- exportloopref # [not necessary from Go 1.22] checks for pointers to enclosing loop variables
     #- forcetypeassert # [replaced by errcheck] finds forced type assertions
     #- gofmt # [replaced by goimports] checks whether code was gofmt-ed
     #- gofumpt # [replaced by goimports, gofumports is not available yet] checks whether code was gofumpt-ed
@@ -335,9 +334,6 @@ issues:
   # Set to 0 to disable.
   # Default: 3
   max-same-issues: 50
-
-  exclude-dirs:
-    - src/resources
 
   exclude-rules:
     - source: "(noinspection|TODO)"
