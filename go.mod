@@ -1,7 +1,6 @@
 module github.com/arielsrv/go-mod-upgrade
 
 go 1.22
-
 toolchain go1.22.6
 
 require (
@@ -11,7 +10,7 @@ require (
 	github.com/briandowns/spinner v1.23.1
 	github.com/fatih/color v1.17.0
 	github.com/urfave/cli/v2 v2.27.4
-	golang.org/x/mod v0.20.0
+	golang.org/x/mod v0.22.0
 )
 
 require (
