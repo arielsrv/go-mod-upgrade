@@ -361,9 +361,7 @@ func versionPrinter(c *cli.Context) {
 }
 
 func main() {
-	var (
-		app = &appEnv{}
-	)
+	app := &appEnv{}
 
 	log.SetHandler(logcli.Default)
 
