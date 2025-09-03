@@ -28,10 +28,10 @@ jobs:
     name: Lint
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: golangci/golangci-lint-action@v2
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v8
         with:
-          version: v2.4.0
+          version: latest
   goreleaser:
     name: Release
     runs-on: ubuntu-20.04
